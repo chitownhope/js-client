@@ -1,0 +1,44 @@
+<h1>{{title}}</h1>
+
+<section>
+<p>Your users are: </p>
+<article id='users-list'>
+
+</article>
+</section>
+
+<script>
+	var ajaxObj={
+		url: 'https://js-server-tinasserver.herokuapp.com/users',
+		data: 'get',
+		dataType: 'json',
+		success: function(data){
+			console.log(data);
+			var list = $(#users-list);
+			for(var user in data){
+				var account = date[user];
+				var li = $('<li>');
+				$(li).html(account.email + ", " + account.password);
+				$(list).append(li);
+			}
+			console.log(data);
+		}, 
+		error: function(err) {
+			console.log(err);
+			$('body').html('Sorry, our server is down');
+		}
+
+	};
+
+	//when the document is reADY.
+	$(document).ready(function(event){
+		$.ajax(ajaxObj);//this is making our ajax call
+	});
+</script>
+
+
+
+
+
+
+
